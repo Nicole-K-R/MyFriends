@@ -1,0 +1,28 @@
+//Custom slots for event type
+
+EVENT_NAME
+
+Get Dinner
+Get drinks
+Attend a Hackathon
+Study
+Get Coffee
+Get Bubble tea
+Play Board games
+Go Skating
+Play Frisbee
+Go Biking
+Bike
+Go Walking
+Walk
+Go Swimming
+Swim
+Go Shopping
+Shop
+Workout
+Hang out
+Get Lunch
+Get Brunch
+Chill with my squad
+Go clubbing
+Play Soccer
