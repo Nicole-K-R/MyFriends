@@ -50,6 +50,9 @@
                 "type": "AMAZON.TIME"
             }
         ]
+      },
+      {
+        "intent": "GetInstruction"
       }
     ]
 }
