@@ -1,0 +1,58 @@
+{
+	"intents":[
+      {
+        "intent": "CreateEvent",
+        "slots": [
+          {
+            "name": "Event",
+            "type": "EVENT_NAME"
+          },
+          {
+            "name": "Date",
+            "type": "AMAZON.DATE"
+          },
+          {
+            "name": "Time",
+            "type": "AMAZON.TIME"
+          }
+        ]
+      },
+      {
+        "intent": "SendEvent",
+        "slots": [
+            {
+                "name": "Event",
+                "type": "EVENT_NAME"
+            },
+            {
+                "name": "Date",
+                "type": "AMAZON.DATE"
+            },
+            {
+                "name": "Time",
+                "type": "AMAZON.TIME"
+            }
+        ]
+      },
+      {
+        "intent": "GetEvents",
+        "slots": [
+            {
+                "name": "Event",
+                "type": "EVENT_NAME"
+            },
+            {
+                "name": "Date",
+                "type": "AMAZON.DATE"
+            },
+            {
+                "name": "Time",
+                "type": "AMAZON.TIME"
+            }
+        ]
+      },
+      {
+        "intent": "GetInstruction"
+      }
+    ]
+}
