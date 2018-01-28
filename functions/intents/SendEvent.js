@@ -10,14 +10,20 @@ var file = 'db.json'
 * @param {string} Event Event name
 * @param {string} Date Date value
 * @param {string} Time Time value
+* @param {string} Number Number value
 * @returns {object}
 */
-module.exports = (Event = null, Date = null, Time = null, callback) => {
+module.exports = (Event = null, Date = null, Time = null, Number = null, callback) => {
   var err = null;
   var number = '6476227473'; // Get data from DB
   var message = 'Do you want to ' + Event;
   if (Date !== null){ message += ' on  ' + Date; }
   if (Time !== null){ message += ' at ' + Time; }
+
+  if (Number === 'Tracy') { number = '5195809810'; }
+  else if (Number === 'Matt') { number = '9054641350'; }
+  else if (Number === 'Nicole') { number = '6476227473'; }
+  else if (Number === 'Tracy') { number = '4165712421'; }
 
   return lib.utils.sms({
     to: number,
