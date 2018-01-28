@@ -7,7 +7,7 @@ const lib = require('lib');
 * @param {string} Time Time value
 * @returns {object}
 */
-module.exports = (name = 'World', callback) => {
+module.exports = (Event, Date, Time, callback) => {
   // Call DB to get events
   return callback(null, {
     outputSpeech: {

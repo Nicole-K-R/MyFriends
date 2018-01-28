@@ -5,11 +5,7 @@ const lib = require('lib');
 * @returns {object}
 */
 module.exports = (callback) => {
-  var number, message; // Get data from DB
-  // Create message based on event
-
-  // Get numbers for DB
-  sendSMS(number, message);
+    var err = null;
   return callback(null, {
     outputSpeech: {
       type: 'PlainText',

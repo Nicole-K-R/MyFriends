@@ -19,7 +19,7 @@ var sendSMS = function(number, message){
 * @param {string} Time Time value
 * @returns {object}
 */
-module.exports = (name = 'World', callback) => {
+module.exports = (Event, Date, Time, callback) => {
   var number, message; // Get data from DB
   // Create message based on event
 

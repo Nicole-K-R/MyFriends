@@ -7,7 +7,7 @@ const lib = require('lib');
 * @param {string} Time Time value
 * @returns {object}
 */
-module.exports = (name = 'World', callback) => {
+module.exports = (Event, Date, Time, callback) => {
     // Send data to DB
 
     return callback(null, {
