@@ -16,17 +16,6 @@ const lib = require('lib');
 //     // Do something with result
 // });
 
-
-// lib.utils.storage.set("key", [{
-//         "eventName": "Play soccer",
-//         "eventTime": null,
-//         "eventDate": null,
-//         "eventPerson": "Nicole"
-//     }], function(err) {
-//     if (err) { console.log(err); }
-//     // Do something with result
-// });
-
 // lib.utils.storage.get('key', (err, value) => {
 //     value = [{
 //         eventName: "Hang out",
@@ -51,3 +40,31 @@ const lib = require('lib');
 // }
 
 // console.log(getEventLists());
+
+// lib.utils.storage.set("key", [{
+//         "eventName": "Study",
+//         "eventTime": "Three am",
+//         "eventDate": "Saturday",
+//         "eventPerson": "Tracy"
+//     },
+//     {
+//         "eventName": "Get bubble tea",
+//         "eventTime": null,
+//         "eventDate": "Tomorrow",
+//         "eventPerson": "Tracy"
+//     },
+//     {
+//         "eventName": "Play soccer",
+//         "eventTime": "morning",
+//         "eventDate": "Tomrrow",
+//         "eventPerson": "Matt"
+//     },
+//     {
+//         "eventName": "Get lunch",
+//         "eventTime": "noon",
+//         "eventDate": null,
+//         "eventPerson": "Matt"
+//     }], function(err) {
+//     if (err) { console.log(err); }
+//     // Do something with result
+// });
