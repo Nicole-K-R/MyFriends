@@ -110,8 +110,8 @@ module.exports = async (Event = null, Date = null, Time = null, Name = null) => 
     }
   } else if (Name === 'my friends'){
     var message = 'Nicole is ' + getEvents('Nicole', eventsLists);
-    message += ' and Tracy is ' + getEvents('Tracy', eventsLists);
-    message += ' and Matt is ' + getEvents('Matt', eventsLists);
+    message += ', and Tracy is ' + getEvents('Tracy', eventsLists);
+    message += ', and Matt is ' + getEvents('Matt', eventsLists);
     return {
       outputSpeech: {
         type: 'PlainText',

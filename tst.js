@@ -33,38 +33,48 @@ const lib = require('lib');
 //     console.log(value);
 // });
 
-// var getEventLists = async () => { // Get list of events from storage
-//     let value = await lib.utils.storage.get('key');
-//     console.log(value);
-//     return await value;
-// }
+var getEvents = function(){
+    // Get storage to ensure it is correct
+    var result = async () => { // Get list of events from storage
+        let value = await lib.utils.storage.get('key');
+        console.log(value);
+        return await value;
+    }
+    console.log(result());
+}
 
-// console.log(getEventLists());
 
-// lib.utils.storage.set("key", [{
-//         "eventName": "Study",
-//         "eventTime": "Three am",
-//         "eventDate": "Saturday",
-//         "eventPerson": "Tracy"
-//     },
-//     {
-//         "eventName": "Get bubble tea",
-//         "eventTime": null,
-//         "eventDate": "Tomorrow",
-//         "eventPerson": "Tracy"
-//     },
-//     {
-//         "eventName": "Play soccer",
-//         "eventTime": "morning",
-//         "eventDate": "Tomrrow",
-//         "eventPerson": "Matt"
-//     },
-//     {
-//         "eventName": "Get lunch",
-//         "eventTime": "noon",
-//         "eventDate": null,
-//         "eventPerson": "Matt"
-//     }], function(err) {
-//     if (err) { console.log(err); }
-//     // Do something with result
-// });
+var reset = function(){
+    // Set default value for storage
+    lib.utils.storage.set("key", [{
+            "eventName": "Study",
+            "eventTime": "Three a.m.",
+            "eventDate": "Saturday",
+            "eventPerson": "Tracy"
+        },
+        {
+            "eventName": "Get bubble tea",
+            "eventTime": null,
+            "eventDate": "Tuesday",
+            "eventPerson": "Tracy"
+        },
+        {
+            "eventName": "Play soccer",
+            "eventTime": "Eight a.m.",
+            "eventDate": "Monday",
+            "eventPerson": "Matt"
+        },
+        {
+            "eventName": "Get lunch",
+            "eventTime": "noon",
+            "eventDate": null,
+            "eventPerson": "Matt"
+        }], function(err) {
+        if (err) { console.log(err); }
+        // Do something with result
+    });
+    getEvents();
+}
+
+// reset();
+getEvents();
