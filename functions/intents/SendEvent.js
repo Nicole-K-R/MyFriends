@@ -19,11 +19,14 @@ module.exports = (Event = null, Date = null, Time = null, Number = null, callbac
   var message = 'Do you want to ' + Event;
   if (Date !== null){ message += ' on  ' + Date; }
   if (Time !== null){ message += ' at ' + Time; }
+  message += "? (p.s. it's from your only friend)";
 
+  console.log(Number);
   if (Number === 'Tracy') { number = '5195809810'; }
-  else if (Number === 'Matt') { number = '9054641350'; }
+  else if (Number === 'Matt' || Number === 'matt') { number = '9054641350'; }
   else if (Number === 'Nicole') { number = '6476227473'; }
-  else if (Number === 'Tracy') { number = '4165712421'; }
+  else if (Number === 'Andrew') { number = '4165712421'; }
+  else if (Number === 'Raveena') { number = '6472050990'; }
 
   return lib.utils.sms({
     to: number,
@@ -36,12 +39,12 @@ module.exports = (Event = null, Date = null, Time = null, Number = null, callbac
       return callback(null, {
         outputSpeech: {
           type: 'PlainText',
-          text: err ? `Error: ${err.message}` : ("Successfully sent sent event " + Event + " through SMS")
+          text: err ? `Error: ${err.message}` : ("Successfully sent event " + Event + " through SMS to " + Number)
         },
         card: {
           type: "Simple",
           title: "Send Event",
-          content: ("Successfully sent sent event " + Event + " through SMS to " + number)
+          content: ("Successfully sent event " + Event + " through SMS to " + Number + '(' + number + ')')
         },
         shouldEndSession: true
       });
