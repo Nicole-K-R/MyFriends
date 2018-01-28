@@ -27,6 +27,18 @@ module.exports = (name = '', slots = {}, request = {}, context, callback) => {
   }, {});
 
   lib[`${context.service.identifier}.intents.${request.intent.name}`](params, function(err, result) {
+    if (err) {
+      return callback(null, {
+        version: context.service.environment,
+        sessionAttributes: {},
+        response: {
+          outputSpeech: {
+            type: 'PlainText',
+            text: `Error: ${err.message}`
+          }
+        }
+      });
+    }
     return callback(null, {
       version: context.service.environment,
       sessionAttributes: {},

@@ -7,7 +7,7 @@ const lib = require('lib');
 * @param {string} Time Time value
 * @returns {object}
 */
-module.exports = (Event, Date, Time, callback) => {
+module.exports = (Event = null, Date = null, Time = null, callback) => {
     // Send data to DB
 
     return callback(null, {
@@ -17,9 +17,9 @@ module.exports = (Event, Date, Time, callback) => {
         },
         card: {
             type: "Simple",
-            title: "Sample Title",
+            title: "Instructions",
             content: "Sample Text \n more text"
-        },
+          },
         shouldEndSession: true
     });
 };

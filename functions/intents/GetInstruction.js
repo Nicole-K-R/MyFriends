@@ -9,11 +9,11 @@ module.exports = (callback) => {
   return callback(null, {
     outputSpeech: {
       type: 'PlainText',
-      text: err ? `Error: ${err.message}` : "Successfully added _event_ to your events"
+      text: err ? `Error: ${err.message}` : "Hello World"
     },
     card: {
       type: "Simple",
-      title: "Sample Title",
+      title: "Instructions",
       content: "Sample Text \n more text"
     },
     shouldEndSession: true

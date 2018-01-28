@@ -11,7 +11,6 @@ var sendSMS = function(number, message){
   });
 }
 
-
 /**
 * SendEvent intent, can receive a 'event', 'Date', and 'Time' parameter
 * @param {string} Event Event name
@@ -19,7 +18,7 @@ var sendSMS = function(number, message){
 * @param {string} Time Time value
 * @returns {object}
 */
-module.exports = (Event, Date, Time, callback) => {
+module.exports = (Event = null, Date = null, Time = null, callback) => {
   var number, message; // Get data from DB
   // Create message based on event
 
