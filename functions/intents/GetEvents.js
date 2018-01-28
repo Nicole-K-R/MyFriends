@@ -12,21 +12,37 @@ const lib = require('lib');
 module.exports = (Event = null, Date = null, Time = null, callback) => {
   // Call DB to get events
   var err = null;
-  if (Event === null) { Event = 'get dinner'; }
-  if (Date === null) {Date = "Tomorrow" ; }
-  if (Time === null) {Time = "noon"; }
+  // if (Event === null) { Event = 'get dinner'; }
+  // if (Date === null) {Date = "Tomorrow" ; }
+  // if (Time === null) {Time = "noon"; }
   
-  console.log("Hello_Nicole: ", Event, ' ', Date, ' ', Time);
-  return callback(null, {
-    outputSpeech: {
-      type: 'PlainText',
-      text: err ? `Error: ${err.message}` : "Successfully got your events"
-    },
-    card: {
-      type: "Simple",
-      title: "Get Events",
-      content: "Successfully got your events"
-    },
-    shouldEndSession: true
-  });
+  if (Event === null && Date === null && Time === null){
+    return callback(null, {
+      outputSpeech: {
+        type: 'PlainText',
+        text: "You have no events"
+      },
+      card: {
+        type: "Simple",
+        title: "Get Events",
+        content: "You have no events"
+      },
+      shouldEndSession: true
+    });
+  }
+  else{
+    console.log("Hello_Nicole: ", Event, ' ', Date, ' ', Time);
+    return callback(null, {
+      outputSpeech: {
+        type: 'PlainText',
+        text: err ? `Error: ${err.message}` : "Successfully got your events"
+      },
+      card: {
+        type: "Simple",
+        title: "Get Events",
+        content: "Successfully got your events"
+      },
+      shouldEndSession: true
+    });
+  }
 };

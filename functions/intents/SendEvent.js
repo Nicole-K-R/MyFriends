@@ -1,16 +1,30 @@
-const lib = require('lib');
+const lib = require('lib')({token: 'o450zjXYYYTEDHZMAH_7Hs_V1xM_Ro8hFkzipClXf3sp-e6mK7g0t89Lq4fGgUmN'});
+var cmd = require('node-cmd');
+var sleep = require('sleep');
 
-var sendSMS = function(number, message){
-  console.log('Received: ', number, ' : ', message);
-  lib.utils.sms({
-    to: number,
-    body: message
-  }, function(err) {
-      // Handle error
-      if (err === null) { console.log('Sent message successfully'); }
-      else { console.log(err); }
-  });
-}
+// var sendSMS = function(number, message, callback){
+//   console.log('Received: ', number, ' : ', message);
+//   lib.utils.sms({
+//     to: number,
+//     body: message
+//   }, function(err, results) {
+//       // Handle error
+//       console.log('Helloooooo');
+//       if (err === null) { console.log('Sent message successfully'); }
+//       else { console.log(err); }
+//       return callback(null, results)
+//   });
+// }
+
+// console.log('Event is null');
+//     lib.utils.sms({
+//       to: number,
+//       body: message
+//     }, function(err, result) {
+//       if (err) {
+//         console.log('Error: ', err);
+//         return callback(error, results);
+//       }
 
 /**
 * SendEvent intent, can receive a 'event', 'Date', and 'Time' parameter
@@ -20,25 +34,28 @@ var sendSMS = function(number, message){
 * @returns {object}
 */
 module.exports = (Event = null, Date = null, Time = null, callback) => {
-  var number, message; // Get data from DB
+  var number = '6476227473', message = 'Hello Nicole'; // Get data from DB
   var err = null;
-  if (Event !== null){
-    sendSMS('6476227473', Event);
-  }
+  
+  if (Event === null && Date === null && Time === null){
+    cmd.run('lib utils.sms --to ' + number + ' --body ' + message);
+    sleep.sleep(2);
+    return callback(null, {
+      outputSpeech: {
+        type: 'PlainText',
+        text: err ? `Error: ${err.message}` : ("Successfully sent sent event " + Event + " through SMS")
+      },
+      card: {
+        type: "Simple",
+        title: "Send Event",
+        content: ("Successfully sent sent event " + Event + " through SMS to " + number)
+      },
+      shouldEndSession: true
+    });
+  } 
+
   // Create message based on event
 
   // Get numbers for DB
   // sendSMS(number, message);
-  return callback(null, {
-    outputSpeech: {
-      type: 'PlainText',
-      text: err ? `Error: ${err.message}` : ("Successfully sent sent event " + Event + " through SMS")
-    },
-    card: {
-      type: "Simple",
-      title: "Send Event",
-      content: "Successfully sent sent event " + Event + " through SMS"
-    },
-    shouldEndSession: true
-  });
 };

@@ -24,6 +24,20 @@ module.exports = (Event = null, Date = null, Time = null, callback) => {
             shouldEndSession: true
         });
      }
+    if (Date !== null && Time !== null){
+        return callback(null, {
+            outputSpeech: {
+                type: 'PlainText',
+                text: "Successfully added " + Event + " on " + Date + " at " + Time + " to your events"
+            },
+            card: {
+                type: "Simple",
+                title: "Create Events",
+                content: "Successfully added " + Event + " on " + Date + " at " + Time + " to your events"
+              },
+            shouldEndSession: true
+        });
+    }
     if (Date === null) {Date = "Tomorrow" ; }
     if (Time === null) {Time = "noon"; }
     return callback(null, {
