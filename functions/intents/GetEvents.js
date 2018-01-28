@@ -36,6 +36,8 @@ var getEvents = function(name, eventsLists){
 */
 module.exports = async (Event = null, Date = null, Time = null, Name = null) => {
   // Call DB to get events
+  if (Name === 'matt') { Name = 'Matt'; }
+  console.log('Name: ' + Name);
   var err = null, eventsLists = {'Tracy': [], 'Nicole': [], 'Matt': []};
   // var events = jsonfile.readFileSync(file);
   let events = await getEventLists();
@@ -58,6 +60,7 @@ module.exports = async (Event = null, Date = null, Time = null, Name = null) => 
 
   // Add each event to a person's list
   for (var i = 0; i < events.length; i ++){
+    console.log(events[i].eventPerson);
     eventsLists[events[i].eventPerson].push([events[i].eventName, events[i].eventDate, events[i].eventTime]);
   }
   console.log('Events Lists Seperated: ' + eventsLists);
