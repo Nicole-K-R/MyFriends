@@ -5,8 +5,11 @@
   "author": "Nicole <n2rosari@edu.uwaterloo.ca>",
   "main": "functions/__main__.js",
   "dependencies": {
+    "file-system": "^2.2.2",
+    "jsonfile": "^4.0.0",
     "lib": "^3.0.1",
-    "node-cmd": "^3.0.0"
+    "node-cmd": "^3.0.0",
+    "thread-sleep": "^2.0.0"
   },
   "private": true,
   "stdlib": {

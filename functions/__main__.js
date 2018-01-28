@@ -7,6 +7,7 @@ const lib = require('lib');
 * @returns {any}
 */
 module.exports = (name = '', slots = {}, request = {}, context, callback) => {
+  // Launch Message *****
 
   request.intent = request.intent || {
     name: name,

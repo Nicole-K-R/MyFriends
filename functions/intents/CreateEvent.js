@@ -1,4 +1,6 @@
 const lib = require('lib');
+var jsonfile = require('jsonfile')
+var file = 'db.json'
 
 /**
 * CreateEvent intent, can receive a 'event', 'Date', and 'Time' parameter
@@ -24,7 +26,15 @@ module.exports = (Event = null, Date = null, Time = null, callback) => {
             shouldEndSession: true
         });
      }
-    if (Date !== null && Time !== null){
+    if (Event !== null && Time !== null && Date !== null){ // Event, Date, Time
+        var obj = {
+            eventName: Event,
+            eventTime: Time,
+            eventDate: Date
+        }
+        // jsonfile.writeFile(file, obj, {flag: 'a'}, function (err) {
+        //     console.error(err);
+        // })
         return callback(null, {
             outputSpeech: {
                 type: 'PlainText',
@@ -37,21 +47,69 @@ module.exports = (Event = null, Date = null, Time = null, callback) => {
               },
             shouldEndSession: true
         });
+    }else if (Event !== null && Time !== null){ // Event, Time
+        var obj = {
+            eventName: Event,
+            eventTime: Time,
+            eventDate: null
+        }
+        // jsonfile.writeFile(file, obj, {flag: 'a'}, function (err) {
+        //     console.error(err);
+        // })
+        return callback(null, {
+            outputSpeech: {
+                type: 'PlainText',
+                text: "Successfully added " + Event + " at " + Time + " to your events"
+            },
+            card: {
+                type: "Simple",
+                title: "Create Events",
+                content: "Successfully added " + Event + " at " + Time + " to your events"
+              },
+            shouldEndSession: true
+        });
+    }else if (Event !== null && Date !== null){ // Event, Date
+        var obj = {
+            eventName: Event,
+            eventTime: null,
+            eventDate: Date
+        }
+        // jsonfile.writeFile(file, obj, {flag: 'a'}, function (err) {
+        //     console.error(err);
+        // })
+        return callback(null, {
+            outputSpeech: {
+                type: 'PlainText',
+                text: "Successfully added " + Event + " on " + Date + " to your events"
+            },
+            card: {
+                type: "Simple",
+                title: "Create Events",
+                content: "Successfully added " + Event + " on " + Date + " to your events"
+              },
+            shouldEndSession: true
+        });
     }
-    if (Date === null) {Date = "Tomorrow" ; }
-    if (Time === null) {Time = "noon"; }
-    return callback(null, {
-        outputSpeech: {
-            type: 'PlainText',
-            text: "Successfully added " + Event + " to your events"
-        },
-        card: {
-            type: "Simple",
-            title: "Create Events",
-            content: "Successfully added " + Event + " to your events"
-          },
-        shouldEndSession: true
-    });
-    console.log("Hello_Nicole: ", Event, ' ', Date, ' ', Time);
-    
+    else if (Event !== null){ // Event
+        var obj = {
+            eventName: Event,
+            eventTime: null,
+            eventDate: null
+        }
+        // jsonfile.writeFile(file, obj, {flag: 'a'}, function (err) {
+        //     console.error(err);
+        // })
+        return callback(null, {
+            outputSpeech: {
+                type: 'PlainText',
+                text: "Successfully added " + Event + " to your events"
+            },
+            card: {
+                type: "Simple",
+                title: "Create Events",
+                content: "Successfully added " + Event + " to your events"
+              },
+            shouldEndSession: true
+        });
+    }
 };

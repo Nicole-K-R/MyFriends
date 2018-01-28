@@ -1,0 +1,52 @@
+[{
+    "eventName": "Play soccer",
+    "eventTime": null,
+    "eventDate": null,
+    "eventPerson": "Nicole"
+},{
+    "eventName": "Chill with my squad",
+    "eventTime": null,
+    "eventDate": "tomorrow",
+    "eventPerson": "Tracy"
+},{
+    "eventName": "Attend a hackathon",
+    "eventTime": null,
+    "eventDate": "Saturday",
+    "eventPerson": "Tracy"
+},
+{
+    "eventName": "Get dinner",
+    "eventTime": "Seven pm",
+    "eventDate": "Friday",
+    "eventPerson": "Nicole"
+},
+{
+    "eventName": "Get bubble tea",
+    "eventTime": "Eleven pm",
+    "eventDate": "Friday",
+    "eventPerson": "Nicole"
+},
+{
+    "eventName": "Get brunch",
+    "eventTime": "this morning",
+    "eventDate": null,
+    "eventPerson": "Tracy"
+},
+{
+    "eventName": "Swim",
+    "eventTime": "Eight am",
+    "eventDate": "Wednesday",
+    "eventPerson": "Matt"
+},
+{
+    "eventName": "Shop",
+    "eventTime": null,
+    "eventDate": "Tuesday",
+    "eventPerson": "Matt"
+},
+{
+    "eventName": "Workout",
+    "eventTime": "tonight",
+    "eventDate": null,
+    "eventPerson": "Matt"
+}]
