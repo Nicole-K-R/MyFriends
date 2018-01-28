@@ -9,7 +9,7 @@ module.exports = (callback) => {
   return callback(null, {
     outputSpeech: {
       type: 'PlainText',
-      text: err ? `Error: ${err.message}` : "Hello World"
+      text: err ? `Error: ${err.message}` : "You are in the instructions area"
     },
     card: {
       type: "Simple",

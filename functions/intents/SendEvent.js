@@ -1,6 +1,7 @@
 const lib = require('lib');
 
 var sendSMS = function(number, message){
+  console.log('Received: ', number, ' : ', message);
   lib.utils.sms({
     to: number,
     body: message
@@ -20,14 +21,18 @@ var sendSMS = function(number, message){
 */
 module.exports = (Event = null, Date = null, Time = null, callback) => {
   var number, message; // Get data from DB
+  var err = null;
+  if (Event !== null){
+    sendSMS('6476227473', Event);
+  }
   // Create message based on event
 
   // Get numbers for DB
-  sendSMS(number, message);
+  // sendSMS(number, message);
   return callback(null, {
     outputSpeech: {
       type: 'PlainText',
-      text: err ? `Error: ${err.message}` : "Successfully added _event_ to your events"
+      text: err ? `Error: ${err.message}` : ("Successfully sent sent event " + Event + " through SMS")
     },
     card: {
       type: "Simple",

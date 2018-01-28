@@ -9,6 +9,7 @@ const lib = require('lib');
 */
 module.exports = (Event = null, Date = null, Time = null, callback) => {
   // Call DB to get events
+  var err = null;
   return callback(null, {
     outputSpeech: {
       type: 'PlainText',
