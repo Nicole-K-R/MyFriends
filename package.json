@@ -5,7 +5,8 @@
   "author": "Nicole <n2rosari@edu.uwaterloo.ca>",
   "main": "functions/__main__.js",
   "dependencies": {
-    "lib": "^3.0.1"
+    "lib": "^3.0.1",
+    "node-cmd": "^3.0.0"
   },
   "private": true,
   "stdlib": {
