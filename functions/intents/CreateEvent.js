@@ -1,6 +1,18 @@
 const lib = require('lib');
-var jsonfile = require('jsonfile')
-var file = 'db.json'
+var jsonfile = require('jsonfile');
+var path = require('path');
+var file = "db.json";
+var fileTxt = "db.txt";
+
+var setVal = async (obj) => {
+    console.log(obj);
+    var valueInt;
+    console.log('HEREEEE');
+    let value = await lib.utils.storage.get('key');
+    value.push(obj);
+    console.log(value);
+    return await lib.utils.storage.set('key', value);
+}
 
 /**
 * CreateEvent intent, can receive a 'event', 'Date', and 'Time' parameter
@@ -9,11 +21,12 @@ var file = 'db.json'
 * @param {string} Time Time value
 * @returns {object}
 */
-module.exports = (Event = null, Date = null, Time = null, callback) => {
+module.exports = async (Event = null, Date = null, Time = null) => {
     // Send data to DB
     var err = null;
+    console.log('Start of createEvent');
     if (Event === null) {
-        return callback(null, {
+        return {
             outputSpeech: {
                 type: 'PlainText',
                 text: err ? `Error: ${err.message}` : ("Please repeat and specify an event")
@@ -24,18 +37,17 @@ module.exports = (Event = null, Date = null, Time = null, callback) => {
                 content: "Please repeat and specify an event"
               },
             shouldEndSession: true
-        });
+        };
      }
     if (Event !== null && Time !== null && Date !== null){ // Event, Date, Time
         var obj = {
             eventName: Event,
             eventTime: Time,
-            eventDate: Date
+            eventDate: Date,
+            eventPerson: "Nicole"
         }
-        // jsonfile.writeFile(file, obj, {flag: 'a'}, function (err) {
-        //     console.error(err);
-        // })
-        return callback(null, {
+        await setVal(obj);
+        return {
             outputSpeech: {
                 type: 'PlainText',
                 text: "Successfully added " + Event + " on " + Date + " at " + Time + " to your events"
@@ -46,17 +58,16 @@ module.exports = (Event = null, Date = null, Time = null, callback) => {
                 content: "Successfully added " + Event + " on " + Date + " at " + Time + " to your events"
               },
             shouldEndSession: true
-        });
+        };
     }else if (Event !== null && Time !== null){ // Event, Time
         var obj = {
             eventName: Event,
             eventTime: Time,
-            eventDate: null
+            eventDate: null,
+            eventPerson: "Nicole"
         }
-        // jsonfile.writeFile(file, obj, {flag: 'a'}, function (err) {
-        //     console.error(err);
-        // })
-        return callback(null, {
+        await setVal(obj);
+        return {
             outputSpeech: {
                 type: 'PlainText',
                 text: "Successfully added " + Event + " at " + Time + " to your events"
@@ -67,17 +78,16 @@ module.exports = (Event = null, Date = null, Time = null, callback) => {
                 content: "Successfully added " + Event + " at " + Time + " to your events"
               },
             shouldEndSession: true
-        });
-    }else if (Event !== null && Date !== null){ // Event, Date
+        };
+    } else if (Event !== null && Date !== null){ // Event, Date
         var obj = {
             eventName: Event,
             eventTime: null,
-            eventDate: Date
+            eventDate: Date,
+            eventPerson: "Nicole"
         }
-        // jsonfile.writeFile(file, obj, {flag: 'a'}, function (err) {
-        //     console.error(err);
-        // })
-        return callback(null, {
+        await setVal(obj);
+        return {
             outputSpeech: {
                 type: 'PlainText',
                 text: "Successfully added " + Event + " on " + Date + " to your events"
@@ -88,18 +98,17 @@ module.exports = (Event = null, Date = null, Time = null, callback) => {
                 content: "Successfully added " + Event + " on " + Date + " to your events"
               },
             shouldEndSession: true
-        });
+        };
     }
     else if (Event !== null){ // Event
         var obj = {
             eventName: Event,
             eventTime: null,
-            eventDate: null
+            eventDate: null,
+            eventPerson: "Nicole"
         }
-        // jsonfile.writeFile(file, obj, {flag: 'a'}, function (err) {
-        //     console.error(err);
-        // })
-        return callback(null, {
+        await setVal(obj);
+        return {
             outputSpeech: {
                 type: 'PlainText',
                 text: "Successfully added " + Event + " to your events"
@@ -108,8 +117,8 @@ module.exports = (Event = null, Date = null, Time = null, callback) => {
                 type: "Simple",
                 title: "Create Events",
                 content: "Successfully added " + Event + " to your events"
-              },
+                },
             shouldEndSession: true
-        });
+        };
     }
 };

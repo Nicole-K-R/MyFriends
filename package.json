@@ -9,6 +9,7 @@
     "jsonfile": "^4.0.0",
     "lib": "^3.0.1",
     "node-cmd": "^3.0.0",
+    "path": "^0.12.7",
     "thread-sleep": "^2.0.0"
   },
   "private": true,
