@@ -13,7 +13,7 @@ module.exports = (callback) => {
     },
     card: {
       type: "Simple",
-      title: "Instructions",
+      title: "Get Instructions",
       content: "Sample Text \n more text"
     },
     shouldEndSession: true

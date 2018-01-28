@@ -35,6 +35,11 @@ module.exports = (name = '', slots = {}, request = {}, context, callback) => {
           outputSpeech: {
             type: 'PlainText',
             text: `Error: ${err.message}`
+          },
+          card: {
+            type: "Simple",
+            title: "Error",
+            content: "Error in main file: " + err.message
           }
         }
       });

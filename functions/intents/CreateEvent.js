@@ -10,16 +10,34 @@ const lib = require('lib');
 module.exports = (Event = null, Date = null, Time = null, callback) => {
     // Send data to DB
     var err = null;
+    if (Event === null) {
+        return callback(null, {
+            outputSpeech: {
+                type: 'PlainText',
+                text: err ? `Error: ${err.message}` : ("Please repeat and specify an event")
+            },
+            card: {
+                type: "Simple",
+                title: "Create Events",
+                content: "Please repeat and specify an event"
+              },
+            shouldEndSession: true
+        });
+     }
+    if (Date === null) {Date = "Tomorrow" ; }
+    if (Time === null) {Time = "noon"; }
     return callback(null, {
         outputSpeech: {
             type: 'PlainText',
-            text: err ? `Error: ${err.message}` : "Successfully added _event_ to your events"
+            text: "Successfully added " + Event + " to your events"
         },
         card: {
             type: "Simple",
-            title: "Instructions",
-            content: "Sample Text \n more text"
+            title: "Create Events",
+            content: "Successfully added " + Event + " to your events"
           },
         shouldEndSession: true
     });
+    console.log("Hello_Nicole: ", Event, ' ', Date, ' ', Time);
+    
 };

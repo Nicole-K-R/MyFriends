@@ -36,8 +36,8 @@ module.exports = (Event = null, Date = null, Time = null, callback) => {
     },
     card: {
       type: "Simple",
-      title: "Sample Title",
-      content: "Sample Text \n more text"
+      title: "Send Event",
+      content: "Successfully sent sent event " + Event + " through SMS"
     },
     shouldEndSession: true
   });
