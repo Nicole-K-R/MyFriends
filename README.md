@@ -31,3 +31,6 @@ provided by the second parameter.
 
 For more information on Alexa Skills please check out
 https://developer.amazon.com/.
+
+
+To log type 'lib logs Nicole.MyFriends[@dev].*' into command line

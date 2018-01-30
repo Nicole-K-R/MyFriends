@@ -1,49 +1,33 @@
+// Require the StdLib node_module
 const lib = require('lib');
 
-// // Or set an Object value
+// // Set a value to storage
 // lib.utils.storage.set("Nic1", {name: "Nicole"}, (err) => {
 //     // Do something with result
 // });
 
-// // Or set an Object value
-// lib.utils.storage.set("Nic1", {name: "Tracy"}, (err) => {
-//     // Do something with result
-// });
-
-//   // Get a key's value
+// // Get a value from storage
 // lib.utils.storage.get("Nic1", (err, value) => {
 //     console.log(value);
 //     // Do something with result
 // });
 
-// lib.utils.storage.get('key', (err, value) => {
-//     value = [{
-//         eventName: "Hang out",
-//         eventTime: null,
-//         eventDate: null,
-//         eventPerson: "Nicole"
-//     }];
-//     console.log(value);
-//     lib.utils.storage.set('key', value, (err) => {
-//         if (err) { console.log(err); }
-//     });
-// });
 
-// lib.utils.storage.get('key', (err, value) => {
-//     console.log(value);
-// });
+// ***** Below is what I used to clear and reset our values during the demo ***** //
 
+// Get and console.log() the values in storage under key 'key'
 var getEvents = function(){
-    // Get storage to ensure it is correct
+    // Result is the function in which GET is called
     var result = async () => { // Get list of events from storage
         let value = await lib.utils.storage.get('key');
         console.log(value);
         return await value;
     }
+    // Call the result function
     console.log(result());
 }
 
-
+// Set the value in storage under key 'key' then call getEvents
 var reset = function(){
     // Set default value for storage
     lib.utils.storage.set("key", [{
@@ -71,10 +55,16 @@ var reset = function(){
             "eventPerson": "Matt"
         }], function(err) {
         if (err) { console.log(err); }
-        // Do something with result
     });
+    // Call getEvents function
     getEvents();
 }
 
+/* 
+Call reset() to reset the values
+Call getEvents() to see what is currently in storage under key 'key'
+*/
+
+
 // reset();
-getEvents();
+// getEvents();

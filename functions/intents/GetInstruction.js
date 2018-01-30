@@ -1,12 +1,14 @@
+// Required node_modules //
 const lib = require('lib');
-
 
 /**
 * SendEvent intent, no parameters
 * @returns {object}
 */
+
 module.exports = (callback) => {
-    var err = null;
+  var err = null;
+  // Return output speech and card to __main__.js and end session upon Alexa speaking the message
   return callback(null, {
     outputSpeech: {
       type: 'PlainText',

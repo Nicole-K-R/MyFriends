@@ -1,16 +1,21 @@
+/* Notes
+* -Could have declared object for all test scenarios at one since value is only set to null in the 
+* object if the variable is also null (meaning Date is only null in obj if Date received from Alexa is null)
+* -Could have declared message at once and used if statements to add or not add Date and Time
+*/
+
+// Required node_modules //
 const lib = require('lib');
 var jsonfile = require('jsonfile');
 var path = require('path');
+// Variables //
 var file = "db.json";
 var fileTxt = "db.txt";
 
+// Get value in storage then push obj to it and set it to storage
 var setVal = async (obj) => {
-    console.log(obj);
-    var valueInt;
-    console.log('HEREEEE');
     let value = await lib.utils.storage.get('key');
     value.push(obj);
-    console.log(value);
     return await lib.utils.storage.set('key', value);
 }
 
@@ -21,10 +26,10 @@ var setVal = async (obj) => {
 * @param {string} Time Time value
 * @returns {object}
 */
+
 module.exports = async (Event = null, Date = null, Time = null) => {
-    // Send data to DB
     var err = null;
-    console.log('Start of createEvent');
+    // If Event is null tell Alexa to say 'Please repeat and specify an event' and create a card
     if (Event === null) {
         return {
             outputSpeech: {
@@ -38,15 +43,19 @@ module.exports = async (Event = null, Date = null, Time = null) => {
               },
             shouldEndSession: true
         };
-     }
+    }
+    //  If Event, Time, and Date are all not null tell Alexa to say successfully created event with details
     if (Event !== null && Time !== null && Date !== null){ // Event, Date, Time
+        // Declare object to be pushed to storage (no values are null)
         var obj = {
             eventName: Event,
             eventTime: Time,
             eventDate: Date,
             eventPerson: "Nicole"
         }
+        // Call setVal with obj to push obj to storage
         await setVal(obj);
+        // Return output speech and card to __main__.js and end session upon Alexa speaking the message
         return {
             outputSpeech: {
                 type: 'PlainText',
@@ -60,13 +69,16 @@ module.exports = async (Event = null, Date = null, Time = null) => {
             shouldEndSession: true
         };
     }else if (Event !== null && Time !== null){ // Event, Time
+        // Declare object to be pushed to storage (Date is null)
         var obj = {
             eventName: Event,
             eventTime: Time,
             eventDate: null,
             eventPerson: "Nicole"
         }
+        // Call setVal with obj to push obj to storage
         await setVal(obj);
+        // Return output speech and card to __main__.js and end session upon Alexa speaking the message
         return {
             outputSpeech: {
                 type: 'PlainText',
@@ -80,13 +92,16 @@ module.exports = async (Event = null, Date = null, Time = null) => {
             shouldEndSession: true
         };
     } else if (Event !== null && Date !== null){ // Event, Date
+        // Declare object to be pushed to storage (Time is null)
         var obj = {
             eventName: Event,
             eventTime: null,
             eventDate: Date,
             eventPerson: "Nicole"
         }
+        // Call setVal with obj to push obj to storage
         await setVal(obj);
+        // Return output speech and card to __main__.js and end session upon Alexa speaking the message
         return {
             outputSpeech: {
                 type: 'PlainText',
@@ -101,13 +116,16 @@ module.exports = async (Event = null, Date = null, Time = null) => {
         };
     }
     else if (Event !== null){ // Event
+        // Declare object to be pushed to storage (Date and Time are null)
         var obj = {
             eventName: Event,
             eventTime: null,
             eventDate: null,
             eventPerson: "Nicole"
         }
+        // Call setVal with obj to push obj to storage
         await setVal(obj);
+        // Return output speech and card to __main__.js and end session upon Alexa speaking the message
         return {
             outputSpeech: {
                 type: 'PlainText',
